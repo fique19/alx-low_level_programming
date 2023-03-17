@@ -19,10 +19,24 @@ int _strcmp(char *s1, char *s2)
 	{
 		continue;
 	}
-	if (i < j)
-		return (-15);
-	else if (i > j)
-		return (15);
-	else
-		return (0);
+	if (i != j)
+		if (i < j)
+			return (-15);
+		else if (i > j)
+			return (15);
+	for (x = 0; x < i; x++)
+	{
+		if (s1[x] != s2[x])
+		{
+			if (s1[x] < s2[x])
+			{
+				return (-15);
+			}
+			if (s1[x] > s2[x])
+			{
+				return (15);
+			}
+		}
+	}
+	return (0);
 }
