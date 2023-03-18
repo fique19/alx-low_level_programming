@@ -2,22 +2,37 @@
 
 /**
  * *cap_string - will capitize all word
- * @*c: input value
+ * @str: input value
  *
- * Return: c
+ * Return: str
 */
-char *cap_string(char *c)
+char *cap_string(char *str)
 {
-	int i;
+	int index = 0;
 
-	for (i = 0; c[i] != '\0'; i++)
+	while (str[index])
 	{
-		if (c[i] == ' ' || c[i] == '.' || c[i] == '\t')
-		{
-			i = i + 1;
-			if (c[i] >= 'a' && c[i] <= 'z')
-				c[i] = c[i] - 32
-		}
+		while (!(str[index] >= 'a' && str[index] <= 'z'))
+			index++;
+
+		if (str[index - 1] == ' ' ||
+		    str[index - 1] == '\t' ||
+		    str[index - 1] == '\n' ||
+		    str[index - 1] == ',' ||
+		    str[index - 1] == ';' ||
+		    str[index - 1] == '.' ||
+		    str[index - 1] == '!' ||
+		    str[index - 1] == '?' ||
+		    str[index - 1] == '"' ||
+		    str[index - 1] == '(' ||
+		    str[index - 1] == ')' ||
+		    str[index - 1] == '{' ||
+		    str[index - 1] == '}' ||
+		    index == 0)
+			str[index] -= 32;
+
+		index++;
 	}
-	return (c);
+
+	return (str);
 }
